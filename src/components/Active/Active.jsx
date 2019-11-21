@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MyContext } from '../../App'
 
 export const Active = () => {
-    return (
-        <div>
-            
-        </div>
-    )
+	const { active } = useContext(MyContext);
+	return (
+		<h1>{active.name}</h1>
+	)
 }

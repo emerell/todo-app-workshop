@@ -22,7 +22,7 @@ export const Line = styled.div`
 
 export const StyledForm = styled(Form)`
 	width: 600px;
-	margin: 0 auto;
+	margin: 0 auto 1.5rem;
 	border: 2px solid ${({ theme }) => theme.primary};
 	border-radius: 5px;
 `;
@@ -45,6 +45,10 @@ export const StyledButton = styled.button`
 	&:focus {
 		outline: none;
 		}
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
 `;
 
 export const ButtonsContainer = styled.div`
