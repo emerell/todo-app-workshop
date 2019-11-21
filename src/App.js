@@ -7,8 +7,17 @@ import { StyledButton } from './AppStyled';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const GlobalStyled = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+  html, body {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
   body {
-    mrgin: none;
+    margin: none;
   }
 `;
 
@@ -16,9 +25,10 @@ export const MyContext = createContext(null);
 
 const theme = {
   primary: '#D1004B',
-  white: '#fff',
-  fontSizeRegular: '14px',
-  fontSizeBig: '16px'
+  secondary: '#5F5F64',
+  white: '#FFFFFF',
+  fontSizeRegular: '16px',
+  fontSizeSmall: '10px'
 }
 
 const initialState = {
@@ -56,23 +66,23 @@ export const App = () => {
 
   return (
     <MyContext.Provider value={context}>
-    <ThemeProvider theme={theme}>
-    <div>
-    <GlobalStyled />
-    {
-      state.active && (
-        <Active />
-      )
-    }
-    {
-      state.showNew && (
-        <New />
-      )
-    }
-    <List />
-    <StyledButton onClick={onShowNewTastForm}>Add new task</StyledButton>
-    </div>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <div>
+          <GlobalStyled />
+          {
+            state.active && (
+              <Active />
+            )
+          }
+          {
+            state.showNew && (
+              <New />
+            )
+          }
+          <List />
+          <StyledButton onClick={onShowNewTastForm}>Add new task</StyledButton>
+        </div>
+      </ThemeProvider>
     </MyContext.Provider>
   )
 } 

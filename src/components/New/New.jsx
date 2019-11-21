@@ -1,6 +1,12 @@
 import React from 'react'
-import { Formik, Field } from 'formik'
-import { StyledField } from './NewStyled';
+import { Formik } from 'formik'
+import { 
+	StyledField, 
+	StyledForm, 
+	StyledButton, 
+	Line, 
+	ButtonsContainer 
+} from './NewStyled';
 
 export const New = () => {
 	return (
@@ -13,12 +19,25 @@ export const New = () => {
 			>
 			{
 				({ handleSubmit, values, dirty }) => (
-					<form onSubmit={handleSubmit}>
-						<StyledField name="name" placeholder="Type task name.." value={values.name} />
-						<StyledField placeholder="Type task description.." name="description" value={values.description} />
-						<button>CANCEL</button>
-						<button disabled={!dirty}>ADD</button>
-					</form>
+					<StyledForm onSubmit={handleSubmit}>
+						<StyledField 
+							name="name" 
+							placeholder="Type task name..." 
+							value={values.name}
+							autoFocus
+						/>
+						<Line />
+						<StyledField 
+							component="textarea"
+							name="description" 
+							placeholder="Type task description..." 
+							value={values.description} 
+						/>
+						<ButtonsContainer>
+							<StyledButton>Cancel</StyledButton>
+							<StyledButton disabled={!dirty}>Add</StyledButton>
+						</ButtonsContainer>
+					</StyledForm>
 				)
 			}
 			</Formik>
