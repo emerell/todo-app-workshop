@@ -6,7 +6,7 @@ export const Task = styled.div`
 	flex-basis: 250px;
 	border: 2px solid ${({ theme }) => theme.primary};
 	border-radius: 3px;
-	color: ${({ theme }) => theme.secondary};
+	color: ${({ theme }) => theme.textColor};
 	cursor: pointer;
 	transition: all .2s ease-in-out;
 	&:hover {

@@ -25,7 +25,8 @@ export const MyContext = createContext(null);
 
 const theme = {
   primary: '#D1004B',
-  secondary: '#5F5F64',
+  secondary: '#E28417',
+  textColor: '#5F5F64',
   white: '#FFFFFF',
   fontSizeRegular: '16px',
   fontSizeSmall: '10px'
@@ -81,7 +82,7 @@ export const App = () => {
           <GlobalStyled />
           {
             state.active && (
-              <Active />
+              <Active deleteTask={deleteTask} />
             )
           }
           {
