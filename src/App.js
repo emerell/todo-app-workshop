@@ -60,7 +60,7 @@ export const App = () => {
     const newList = [
       ...state.list,
       {
-        id: state.list.length + 1,
+        id: Math.floor(Math.random() * Math.floor(1000)),
         name,
         description
       }
@@ -75,12 +75,21 @@ export const App = () => {
       }
       return t;
     })
-    setState({ ...state, list: newTasks, active: task })
+    setState({ ...state, list: newTasks, active: null })
   }
 
   const onShowNewTastForm = () => {
     setState({ ...state, showNew: true, active: null })
   }
+
+  const onCloseNewTastForm = () => {
+    setState({ ...state, showNew: false })
+  }
+
+  const onCloseActiveTastForm = () => {
+    setState({ ...state, active: null })
+  }
+
 
   const context = {
     list: state.list,
@@ -94,12 +103,16 @@ export const App = () => {
           <GlobalStyled />
           {
             state.active && (
-              <Active deleteTask={deleteTask} />
+              <Active 
+                deleteTask={deleteTask} 
+                onCloseActiveTastForm={onCloseActiveTastForm}
+                changeTask={changeTask}
+              />
             )
           }
           {
             state.showNew && (
-              <New addTask={addTask} />
+              <New addTask={addTask} onCloseNewTastForm={onCloseNewTastForm} />
             )
           }
           <List getActiveTask={getActiveTask} />

@@ -20,7 +20,7 @@ const NewTaskSchema = Yup.object().shape({
     .required('Description is required!'),
 });
 
-export const New = ({addTask}) => {
+export const New = ({addTask, onCloseNewTastForm}) => {
 	return (
 		<div>
 			<Formik
@@ -40,7 +40,6 @@ export const New = ({addTask}) => {
 							name="name" 
 							placeholder="Type task name..." 
 							value={values.name}
-							autoFocus
 						/>
 						<Line />
 						<StyledField 
@@ -61,7 +60,7 @@ export const New = ({addTask}) => {
 								<span>{errors.description}</span>
 								) : null}
 							</Required>
-							<StyledButton>Cancel</StyledButton>
+							<StyledButton onClick={onCloseNewTastForm} type="button">Cancel</StyledButton>
 							<StyledButton disabled={!dirty} type="submit">Add</StyledButton>
 						</ButtonsContainer>
 					</StyledForm>

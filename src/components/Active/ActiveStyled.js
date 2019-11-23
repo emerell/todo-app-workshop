@@ -80,3 +80,13 @@ export const FieldButtonBox = styled.div`
 	display: flex;
 	align-items: center;
 `;
+
+export const Required = styled.div`
+	font-size: 0.8rem;
+	font-weight: bold;
+	color: ${({ theme }) => theme.secondary};
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-right: 1rem;
+`;

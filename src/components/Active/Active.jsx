@@ -1,28 +1,46 @@
 import React, { useContext } from 'react';
 import { MyContext } from '../../App';
 import { Formik } from 'formik';
+import * as Yup from 'yup';
 import { 
 	StyledField, 
 	StyledForm, 
 	StyledButton,
 	StyledDeleteButton,
 	Line, 
+	Required,
 	ButtonsContainer,
 	FieldButtonBox
 } from './ActiveStyled';
 
-export const Active = ({deleteTask}) => {
+const ActiveTaskSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Name is too short!')
+    .max(40, 'Name is too long!')
+    .required('Name is required!'),
+  description: Yup.string()
+    .min(10, 'Description is too short!')
+    .required('Description is required!'),
+});
+
+
+export const Active = ({changeTask, deleteTask, onCloseActiveTastForm}) => {
 	const { active } = useContext(MyContext);
 	return (
 		<div>
 			<Formik
 				initialValues={{
+					id: active.id,
 					name: active.name,
 					description: active.description
 				}}
+				validationSchema={ActiveTaskSchema}
+				onSubmit={(values, errors) => {
+          changeTask(values)
+      	}}
 			>
 			{
-				({ handleSubmit, values, dirty }) => (
+				({ handleSubmit, values, errors, touched }) => (
 					<StyledForm onSubmit={handleSubmit}>
 						<FieldButtonBox>
 							<StyledField 
@@ -33,6 +51,7 @@ export const Active = ({deleteTask}) => {
 							/>
 							<StyledDeleteButton 
 								onClick={deleteTask.bind(null, active.id)}
+								type="button"
 							>Delete</StyledDeleteButton>
 						</FieldButtonBox>
 						<Line />
@@ -43,8 +62,19 @@ export const Active = ({deleteTask}) => {
 							value={values.description} 
 						/>
 						<ButtonsContainer>
-							<StyledButton>Cancel</StyledButton>
-							<StyledButton>Add</StyledButton>
+							<Required>
+								{errors.name && touched.name ? (
+								<span>{errors.name}</span>
+								) : null}
+								{errors.description && touched.description ? (
+								<span>{errors.description}</span>
+								) : null}
+							</Required>
+							<StyledButton 
+								onClick={onCloseActiveTastForm} 
+								type="button"
+							>Cancel</StyledButton>
+							<StyledButton type="submit">Add</StyledButton>
 						</ButtonsContainer>
 					</StyledForm>
 				)
