@@ -9,7 +9,7 @@ export const StyledField = styled(Field)`
 	font-family: "Roboto", sans-serif;
 	font-size: ${({ theme }) => theme.fontSizeRegular};
 	line-height: 1.2;
-	color: ${({ theme }) => theme.secondary};
+	color: ${({ theme }) => theme.textColor};
 	&:focus {
 		outline: none;
 	}
@@ -54,4 +54,14 @@ export const StyledButton = styled.button`
 export const ButtonsContainer = styled.div`
 	display: flex;
 	justify-content: flex-end;
+`;
+
+export const Required = styled.div`
+	font-size: 0.8rem;
+	font-weight: bold;
+	color: ${({ theme }) => theme.secondary};
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-right: 1rem;
 `;

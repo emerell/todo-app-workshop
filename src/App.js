@@ -56,6 +56,18 @@ export const App = () => {
     setState({ ...state, list: newList, active: null });
   }
 
+  const addTask = (name, description) => {
+    const newList = [
+      ...state.list,
+      {
+        id: state.list.length + 1,
+        name,
+        description
+      }
+    ];
+    setState({ ...state, list: newList, showNew: false })
+  }
+
   const changeTask = (task) => {
     const newTasks = state.list.map(t => {
       if (t.id === task.id) {
@@ -87,10 +99,10 @@ export const App = () => {
           }
           {
             state.showNew && (
-              <New />
+              <New addTask={addTask} />
             )
           }
-          <List getActiveTask={getActiveTask}/>
+          <List getActiveTask={getActiveTask} />
           <StyledButton onClick={onShowNewTastForm}>Add new task</StyledButton>
         </AppContainer>
       </ThemeProvider>

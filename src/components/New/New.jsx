@@ -1,14 +1,26 @@
 import React from 'react';
 import { Formik } from 'formik';
+import * as Yup from 'yup';
 import { 
 	StyledField, 
 	StyledForm, 
 	StyledButton, 
 	Line, 
-	ButtonsContainer 
+	ButtonsContainer,
+	Required
 } from './NewStyled';
 
-export const New = () => {
+const NewTaskSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Name is too short!')
+    .max(40, 'Name is too long!')
+    .required('Name is required!'),
+  description: Yup.string()
+    .min(10, 'Description is too short!')
+    .required('Description is required!'),
+});
+
+export const New = ({addTask}) => {
 	return (
 		<div>
 			<Formik
@@ -16,9 +28,13 @@ export const New = () => {
 					name: '',
 					description: ''
 				}}
+				validationSchema={NewTaskSchema}
+				onSubmit={(values, errors) => {
+          addTask(values.name, values.description)
+      	}}
 			>
 			{
-				({ handleSubmit, values, dirty }) => (
+				({ handleSubmit, values, errors, touched, dirty }) => (
 					<StyledForm onSubmit={handleSubmit}>
 						<StyledField 
 							name="name" 
@@ -34,8 +50,19 @@ export const New = () => {
 							value={values.description} 
 						/>
 						<ButtonsContainer>
+							<Required>
+								{!dirty ? (
+								<span>Fill out the fields, please.</span>
+								) : null}
+								{errors.name && touched.name ? (
+								<span>{errors.name}</span>
+								) : null}
+								{errors.description && touched.description ? (
+								<span>{errors.description}</span>
+								) : null}
+							</Required>
 							<StyledButton>Cancel</StyledButton>
-							<StyledButton disabled={!dirty}>Add</StyledButton>
+							<StyledButton disabled={!dirty} type="submit">Add</StyledButton>
 						</ButtonsContainer>
 					</StyledForm>
 				)
