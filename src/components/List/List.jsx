@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
-import { MyContext } from '../../App'
-
-import { Task, TasksContainer } from './ListStyled'
+import React, { useContext } from 'react';
+import { MyContext } from '../../App';
+import PropTypes from 'prop-types';
+import { Task, TasksContainer } from './ListStyled';
 
 export const List = ({getActiveTask}) => {
 	const { list } = useContext(MyContext);
@@ -23,4 +23,8 @@ export const List = ({getActiveTask}) => {
 		}
 		</TasksContainer>
 	)
+}
+
+List.propTypes = {
+	getActiveTask: PropTypes.func.isRequired
 }

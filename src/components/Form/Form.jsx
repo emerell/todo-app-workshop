@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { MyContext } from '../../App';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import { 
 	StyledField, 
 	StyledForm, 
@@ -89,4 +90,11 @@ export const Form = ({sumbitFormAction, onCloseForm, hasDeleteButton, deleteTask
 			</Formik>
 		</div>
 	)
+}
+
+Form.propTypes = {
+	sumbitFormAction: PropTypes.func.isRequired,
+	onCloseForm: PropTypes.func.isRequired,
+	hasDeleteButton: PropTypes.bool.isRequired,
+	deleteTask: PropTypes.func
 }
