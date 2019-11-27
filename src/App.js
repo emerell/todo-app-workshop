@@ -56,13 +56,13 @@ export const App = () => {
     setState({ ...state, list: newList, active: null });
   }
 
-  const addTask = (name, description) => {
+  const addTask = (task) => {
     const newList = [
       ...state.list,
       {
         id: Math.floor(Math.random() * Math.floor(1000)),
-        name,
-        description
+        name: task.name,
+        description: task.description
       }
     ];
     setState({ ...state, list: newList, showNew: false })

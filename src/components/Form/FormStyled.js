@@ -51,6 +51,49 @@ export const StyledButton = styled.button`
 	}
 `;
 
+export const StyledCancelButton = styled.button`
+	margin: 1rem 1.5rem 1rem 0;
+	background-color: ${({ theme }) => theme.white};
+	border: 1px solid ${({ theme }) => theme.primary};
+	font-family: "Roboto", sans-serif;
+	font-size: ${({ theme }) => theme.fontSizeRegular};
+	text-transform: uppercase;
+	width: 100px;
+	height: 34px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: ${({ theme }) => theme.primary};
+	cursor: pointer;
+	&:focus {
+		outline: none;
+		}
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+`;
+
+export const ButtonsContainer = styled.div`
+	display: flex;
+	justify-content: flex-end;
+`;
+
+export const Required = styled.div`
+	font-size: 0.8rem;
+	font-weight: bold;
+	color: ${({ theme }) => theme.secondary};
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-right: 1rem;
+`;
+
+export const FieldButtonBox = styled.div`
+	display: flex;
+	align-items: center;
+`;
+
 export const StyledDeleteButton = styled.button`
 	margin: 0 1.25rem;
 	background-color: ${({ theme }) => theme.secondary};
@@ -69,24 +112,4 @@ export const StyledDeleteButton = styled.button`
 	&:focus {
 		outline: none;
 		}
-`;
-
-export const ButtonsContainer = styled.div`
-	display: flex;
-	justify-content: flex-end;
-`;
-
-export const FieldButtonBox = styled.div`
-	display: flex;
-	align-items: center;
-`;
-
-export const Required = styled.div`
-	font-size: 0.8rem;
-	font-weight: bold;
-	color: ${({ theme }) => theme.secondary};
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin-right: 1rem;
 `;
