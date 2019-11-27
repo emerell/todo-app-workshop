@@ -30,6 +30,7 @@ export const Form = ({sumbitFormAction, onCloseForm, hasDeleteButton, deleteTask
 	return (
 		<div>
 			<Formik
+				enableReinitialize
 				initialValues={{
 					id: active ? active.id : null,
 					name: active ? active.name : '',
