@@ -6,7 +6,7 @@ export const StyledField = styled(Field)`
 	padding: 0.6rem 1rem;
 	border: none;
 	resize: none;
-	font-family: "Roboto", sans-serif;
+	font-family: ${({ theme }) => theme.mainfontFamily};
 	font-size: ${({ theme }) => theme.fontSizeRegular};
 	line-height: 1.2;
 	color: ${({ theme }) => theme.textColor};
@@ -32,7 +32,7 @@ export const StyledButton = styled.button`
 	background-color: ${({ theme }) => theme.primary};
 	border: none;
 	border-radius: 3px;
-	font-family: "Roboto", sans-serif;
+	font-family: ${({ theme }) => theme.mainfontFamily};
 	font-size: ${({ theme }) => theme.fontSizeRegular};
 	text-transform: uppercase;
 	width: 100px;
@@ -55,7 +55,7 @@ export const StyledCancelButton = styled.button`
 	margin: 1rem 1.5rem 1rem 0;
 	background-color: ${({ theme }) => theme.white};
 	border: 1px solid ${({ theme }) => theme.primary};
-	font-family: "Roboto", sans-serif;
+	font-family: ${({ theme }) => theme.mainfontFamily};
 	font-size: ${({ theme }) => theme.fontSizeRegular};
 	text-transform: uppercase;
 	width: 100px;
@@ -99,7 +99,7 @@ export const StyledDeleteButton = styled.button`
 	background-color: ${({ theme }) => theme.secondary};
 	border: none;
 	border-radius: 3px;
-	font-family: "Roboto", sans-serif;
+	font-family: ${({ theme }) => theme.mainfontFamily};
 	font-size: 0.6rem;
 	text-transform: uppercase;
 	width: 75px;

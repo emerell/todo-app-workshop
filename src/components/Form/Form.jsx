@@ -17,15 +17,17 @@ import {
 
 const FormSchema = Yup.object().shape({
   name: Yup.string()
-    .min(2, 'Name is too short!')
-    .max(40, 'Name is too long!')
+    .min(2, 'Name is too short! It should be at least 2 characters')
+    .max(40, 'Name should not be more than 40 characters')
     .required('Name is required!'),
   description: Yup.string()
-    .min(10, 'Description is too short!')
+    .min(10, 'Description should be at least 10 characters')
     .required('Description is required!'),
 });
 
-export const Form = ({sumbitFormAction, onCloseForm, hasDeleteButton, deleteTask}) => {
+export const Form = ({sumbitFormAction, submitFormButtonText,
+											onCloseForm, hasDeleteButton, deleteTask
+										}) => {
 	const { active } = useContext(MyContext);
 
 	return (
@@ -82,7 +84,7 @@ export const Form = ({sumbitFormAction, onCloseForm, hasDeleteButton, deleteTask
 								) : null}
 							</Required>
 							<StyledCancelButton onClick={onCloseForm} type="button">Cancel</StyledCancelButton>
-							<StyledButton type="submit">Add</StyledButton>
+							<StyledButton type="submit">{submitFormButtonText}</StyledButton>
 						</ButtonsContainer>
 					</StyledForm>
 				)
@@ -95,6 +97,13 @@ export const Form = ({sumbitFormAction, onCloseForm, hasDeleteButton, deleteTask
 Form.propTypes = {
 	sumbitFormAction: PropTypes.func.isRequired,
 	onCloseForm: PropTypes.func.isRequired,
-	hasDeleteButton: PropTypes.bool.isRequired,
+	hasDeleteButton: PropTypes.bool,
+	submitFormButtonText: PropTypes.string,
 	deleteTask: PropTypes.func
 }
+
+Form.defaultProps = {
+	submitFormButtonText: 'Save',
+  hasDeleteButton: false,
+	deleteTask: null
+};

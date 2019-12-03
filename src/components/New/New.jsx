@@ -6,8 +6,8 @@ export const New = ({addTask, onCloseNewTastForm}) => {
 	return (
 		<Form 
 			sumbitFormAction={addTask}
+			submitFormButtonText='Add'
 			onCloseForm={onCloseNewTastForm}
-			hasDeleteButton={false}
 		/>
 	)
 }

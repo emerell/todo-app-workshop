@@ -9,7 +9,7 @@ export const Active = ({changeTask, deleteTask, onCloseActiveTastForm}) => {
 			sumbitFormAction={changeTask}
 			onCloseForm={onCloseActiveTastForm}
 			deleteTask={deleteTask}
-			hasDeleteButton={true}
+			hasDeleteButton
 		/>
 	)
 }

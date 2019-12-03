@@ -29,7 +29,8 @@ const theme = {
   textColor: '#5F5F64',
   white: '#FFFFFF',
   fontSizeRegular: '16px',
-  fontSizeSmall: '10px'
+  fontSizeSmall: '10px',
+  mainfontFamily: '"Roboto", sans-serif'
 }
 
 const initialState = {
